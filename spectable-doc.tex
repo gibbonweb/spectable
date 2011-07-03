@@ -1,0 +1,58 @@
+\documentclass[12pt,a4paper]{scrreprt}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{geometry}
+\geometry{a4paper}
+
+
+% uses the ``spectable'' package from spectable.sty
+\usepackage{spectable}
+
+\begin{document}
+\pagestyle{empty}
+
+\chapter{The ``spectable'' package}
+
+The ``spectable'' package provides a simple way of tracking requirement specifications in a LaTeX document. Each requirement is given a unique ID based on the section it is defined in. It can be used to track the implementation of features in a project. The specification table below illustrates its usage.\\
+
+This package was created for the sole purpose of simplifying my code in one of my projects -- it is not meant to be complete, correct or universally usable. Feel free to use it anywhere you like.
+
+\section{Demo requirement table}
+
+\begin{spectable}
+\spec{The robot must have an emergency off button}{\valid}
+\spec{The robot must have an on-off switch}{\new}
+\spec{\strike{The robot must behave randomly}}{\deleted}
+\spec{The robot must look cool}{\discussion{What exactly is meant by 'cool'?}}
+\spec{The robot must be steam-powered}{\imposed}
+\specinfo{A requirement ID consists of \texttt{Chapter.Section.Subsection.Sx}, where \texttt{x} is a unique number in this subsection}
+\specinfo{If a specification claim becomes invalid, \textbf{don't} delete it, but rather mark it as \texttt{deleted} and \texttt{strike} the description.}
+\end{spectable}
+
+The code for the above table looks as follows:
+\begin{verbatim}
+\begin{spectable}
+\spec{The robot must have an emergency off button}{\valid}
+\spec{The robot must have an on-off switch}{\new}
+\spec{\strike{The robot must behave randomly}}{\deleted}
+\spec{The robot must look cool}{\discussion{What exactly is meant by 'cool'?}}
+\spec{The robot must be steam-powered}{\imposed}
+\specinfo{A requirement ID consists of \texttt{Chapter.Section.Subsection.Sx}, where \texttt{x} is a unique number in this subsection}
+\specinfo{If a specification claim becomes invalid, \textbf{don't} delete it, but rather mark it as \texttt{deleted} and \texttt{strike} the description.}
+\end{spectable}
+\end{verbatim}
+
+\section{License}
+
+``spectable'' is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit \url{http://creativecommons.org/licenses/by-sa/3.0/} or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA. \\
+\begin{center}
+\includegraphics{by-sa.png}
+\end{center}
+
+
+
+
+\end{document}  

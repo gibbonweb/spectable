@@ -1,0 +1,30 @@
+\ProvidesPackage{spectable}
+%% This work is licensed under the
+%% Creative Commons Attribution-ShareAlike 3.0 Unported License.
+%% To view a copy of this license, visit
+%% http://creativecommons.org/licenses/by-sa/3.0/ or send a letter
+%% to Creative Commons, 444 Castro Street, Suite 900, Mountain View,
+%% California, 94041, USA.
+
+%\usepackage{sectsty}
+\usepackage{longtable}
+\usepackage{wasysym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{ulem}
+
+% spec table
+\newenvironment{spectable}{\begin{longtable}{|l|p{9cm}|p{2.5cm}|}\hline \usefont{OT1}{phv}{bc}{n}ID & \usefont{OT1}{phv}{bc}{n}Description & \usefont{OT1}{phv}{bc}{n}Comments\endhead\hline}{\end{longtable}}
+% spec counter
+\newcounter{spec}[subsection]
+\newcounter{subspec}[spec]
+\newcommand{\spec}[2]{\stepcounter{spec}\textbf{\arabic{chapter}.\arabic{section}.\arabic{subsection}.S\arabic{spec}} & #1 & #2\\\hline}
+\newcommand{\subspec}[2]{\stepcounter{subspec}\textbf{\arabic{chapter}.\arabic{section}.\arabic{subsection}.S\arabic{spec}.\alph{subspec}} & #1 & #2\\\hline}
+\newcommand{\specinfo}[1]{\textit{info} & \textit{#1} & \info\\\hline}
+% spec statuses
+\newcommand{\new}{\Square~\color{YellowOrange}{\textbf{new}}\color{Black}}
+\newcommand{\discussion}[1]{{\Square~}\color{NavyBlue}{\textbf{to~be~defined:}\newline\small{#1}}\color{Black}}
+\newcommand{\valid}{\CheckedBox~\color{Green}{\textbf{valid}}\color{Black}}
+\newcommand{\imposed}{\CheckedBox~\color{Green}{\textbf{required}}\color{Black}}
+\newcommand{\deleted}{\XBox~\color{Red}{\sout{\textbf{deleted}}}\color{Black}}
+\newcommand{\strike}[1]{\sout{#1}}
+\newcommand{\info}{\color{Goldenrod}{info}\color{Black}}
